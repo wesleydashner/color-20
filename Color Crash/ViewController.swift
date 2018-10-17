@@ -238,8 +238,6 @@ class ViewController: UIViewController {
     var win = false
     var lose = false
     
-    var timesWon = 0
-    
     func updateCounter() {
         moveCounter += 1
         moveCounterLabel.text = String(moveCounter)
@@ -288,6 +286,16 @@ class ViewController: UIViewController {
         for i in imageTiles {
             i?.image = UIImage(named: colors.randomElement()!)
         }
+        if blackCosmetic == true {
+            tile0_0.image = UIImage(named: "black")
+        }
+        if rainbowCosmetic == true {
+            tile0_0.image = UIImage(named: "rainbow")
+        }
+        if invisibleCosmetic == true {
+            tile0_0.image = UIImage(named: "invisible")
+        }
+
         // Bad way to make sure starting tile != an adjacent tile
         while tile0_0.image == tile0_1.image {
             tile0_1.image = UIImage(named: colors.randomElement()!)
@@ -313,7 +321,18 @@ class ViewController: UIViewController {
                 somethingChanged = false
                 for i in objectTiles {
                     if i.captured == true {
-                        i.color = UIImage(named: newColor)!
+                        if blackCosmetic == true {
+                            i.color = UIImage(named: "black")!
+                        }
+                        else if rainbowCosmetic == true {
+                            i.color = UIImage(named: "rainbow")!
+                        }
+                        else if invisibleCosmetic == true {
+                            i.color = UIImage(named: "invisible")!
+                        }
+                        else {
+                            i.color = UIImage(named: newColor)!
+                        }
                         for j in objectTiles {
                             if (abs(j.x - i.x) == 1 && j.y == i.y) || (abs(j.y - i.y) == 1 && j.x == i.x) {
                                 if j.color == UIImage(named: newColor)! {
@@ -332,7 +351,10 @@ class ViewController: UIViewController {
             winIfTrue()
         }
         else {
-            if tile_0_0.color == UIImage(named: newColor) {
+            if blackCosmetic == true || rainbowCosmetic == true || invisibleCosmetic == true {
+                resetGame()
+            }
+            else if tile_0_0.color == UIImage(named: newColor) {
                 resetGame()
             }
             else if win == true {
@@ -716,9 +738,24 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDefaults.standard.object(forKey: "rainbowBought") == nil {
+            UserDefaults.standard.set(false, forKey: "rainbowBought")
+        }
+        if UserDefaults.standard.object(forKey: "blackBought") == nil {
+            UserDefaults.standard.set(false, forKey: "blackBought")
+        }
+        if UserDefaults.standard.object(forKey: "invisibleBought") == nil {
+            UserDefaults.standard.set(false, forKey: "invisibleBought")
+        }
+        if GlobalVariable.timesWon != -1 {
+            UserDefaults.standard.set(GlobalVariable.timesWon, forKey: "timesWon")
+        }
         if UserDefaults.standard.object(forKey: "timesWon") != nil {
-            timesWon = UserDefaults.standard.object(forKey: "timesWon") as! Int
-            winsCounter.text = String(timesWon)
+            GlobalVariable.timesWon = UserDefaults.standard.object(forKey: "timesWon") as! Int
+            winsCounter.text = String(GlobalVariable.timesWon)
+        }
+        else {
+            GlobalVariable.timesWon = 0
         }
         tile0_0.image = UIImage(named: colors.randomElement()!)
         resetGame()
@@ -730,9 +767,29 @@ class ViewController: UIViewController {
             self.tile0_0.transform = .identity
         }) { (success) in
         }
+        
+        rainbowCosmetic = GlobalVariable.rainbowCosmetic
+        blackCosmetic = GlobalVariable.blackCosmetic
+        invisibleCosmetic = GlobalVariable.invisibleCosmetic
+        timesWon = GlobalVariable.timesWon
+        
+        if blackCosmetic == true {
+            winLabel.textColor = UIColor.white
+        }
+        if blackCosmetic == true || rainbowCosmetic == true || invisibleCosmetic == true {
+            noteLabel.text = "Tap any color to play again."
+        }
     }
     
-    var rainbowCosmetic = false
-    var blackCosmetic = false
+    struct GlobalVariable {
+        static var rainbowCosmetic = false
+        static var blackCosmetic = false
+        static var invisibleCosmetic = false
+        static var timesWon = -1
+    }
     
+    var rainbowCosmetic = GlobalVariable.rainbowCosmetic
+    var blackCosmetic = GlobalVariable.blackCosmetic
+    var invisibleCosmetic = GlobalVariable.invisibleCosmetic
+    var timesWon = GlobalVariable.timesWon
 }
