@@ -248,7 +248,7 @@ class ViewController: UIViewController {
             let testColor = tile_0_0.color
             for i in objectTiles {
                 if i.color != testColor {
-                    if moveCounter == 21 {
+                    if moveCounter == 20 {
                         lose = true
                         winLabel.text = "YOU LOSE!"
                         winLabel.isHidden = false
