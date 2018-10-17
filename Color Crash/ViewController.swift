@@ -263,7 +263,7 @@ class ViewController: UIViewController {
             winLabel.isHidden = false
             noteLabel.isHidden = false
             timesWon += 1
-            winsCounter.text = String(timesWon)
+            winsCounter.text = "$" + String(timesWon)
             UserDefaults.standard.set(timesWon, forKey: "timesWon")
         }
         else {
@@ -765,7 +765,7 @@ class ViewController: UIViewController {
         }
         if UserDefaults.standard.object(forKey: "timesWon") != nil {
             GlobalVariable.timesWon = UserDefaults.standard.object(forKey: "timesWon") as! Int
-            winsCounter.text = String(GlobalVariable.timesWon)
+            winsCounter.text = "$" + String(GlobalVariable.timesWon)
         }
         else {
             GlobalVariable.timesWon = 0
