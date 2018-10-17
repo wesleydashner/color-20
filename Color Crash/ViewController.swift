@@ -262,9 +262,9 @@ class ViewController: UIViewController {
             winLabel.text = "YOU WIN!"
             winLabel.isHidden = false
             noteLabel.isHidden = false
-            timesWon += 1
-            winsCounter.text = "$" + String(timesWon)
-            UserDefaults.standard.set(timesWon, forKey: "timesWon")
+            GlobalVariable.timesWon += 1
+            winsCounter.text = "$" + String(GlobalVariable.timesWon)
+            UserDefaults.standard.set(GlobalVariable.timesWon, forKey: "timesWon")
         }
         else {
             lose = true
@@ -740,17 +740,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Hide instructionLabel if app has been opened more than 3 times
+        // Hide instructionLabel if this view has been opened more than 3 times
         if UserDefaults.standard.object(forKey: "timesOpened") == nil {
-            UserDefaults.standard.set(-1, forKey: "timesOpened")
+            UserDefaults.standard.set(0, forKey: "timesOpened")
         }
         var timesOpened = UserDefaults.standard.object(forKey: "timesOpened") as! Int
         timesOpened += 1
         UserDefaults.standard.set(timesOpened, forKey: "timesOpened")
-        if timesOpened > 3 {
+        if timesOpened > 1 {
             instructionsLabel.isHidden = true
         }
         
+        // Set all cosmeticBought values to false if this is the first time the app is opened
         if UserDefaults.standard.object(forKey: "rainbowBought") == nil {
             UserDefaults.standard.set(false, forKey: "rainbowBought")
         }
@@ -760,6 +761,7 @@ class ViewController: UIViewController {
         if UserDefaults.standard.object(forKey: "invisibleBought") == nil {
             UserDefaults.standard.set(false, forKey: "invisibleBought")
         }
+        
         if GlobalVariable.timesWon != -1 {
             UserDefaults.standard.set(GlobalVariable.timesWon, forKey: "timesWon")
         }
