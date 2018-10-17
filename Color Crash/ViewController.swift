@@ -246,7 +246,7 @@ class ViewController: UIViewController {
     }
     
     func winIfTrue() {
-        if moveCounter <= 22 {
+        if moveCounter <= 20 {
             let testColor = tile_0_0.color
             for i in objectTiles {
                 if i.color != testColor {
@@ -732,7 +732,7 @@ class ViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-
-    }
+    var rainbowCosmetic = false
+    var blackCosmetic = false
+    
 }

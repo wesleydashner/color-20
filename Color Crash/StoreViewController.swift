@@ -17,4 +17,12 @@ class StoreViewController: UIViewController {
     @IBAction func backButton(_ sender: UIButton) {
     }
     
+    @IBAction func buyRainbowCosmetic(_ sender: UIButton) {
+        let vc = ViewController(nibName: "View Controller", bundle: nil)
+        vc.rainbowCosmetic = true
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    @IBAction func buyBlackCosmetic(_ sender: UIButton) {
+    }
 }

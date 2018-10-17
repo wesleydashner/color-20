@@ -617,9 +617,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFk-WE-8zG">
-                                <rect key="frame" x="13" y="43" width="46" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFk-WE-8zG">
+                                <rect key="frame" x="20" y="34" width="46" height="34"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
                                 <state key="normal" title="BACK">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -629,22 +628,109 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="xmB-wZ-cC9"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6WQ-35-kS7" userLabel="Main Stack View">
+                                <rect key="frame" x="0.0" y="68" width="375" height="625"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CRU-Ao-HrW" userLabel="rainbow Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rainbow" translatesAutoresizingMaskIntoConstraints="NO" id="Mdh-8Z-jsu">
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRICE: 500" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjk-tL-5BA">
+                                                <rect key="frame" x="125" y="0.0" width="125" height="125"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bJ-0q-5vq">
+                                                <rect key="frame" x="250" y="0.0" width="125" height="125"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="35"/>
+                                                <state key="normal" title="BUY">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buyRainbowCosmetic:" destination="aBU-pc-EE6" eventType="touchUpInside" id="6Dn-BA-XG8"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="125" id="AC9-QS-Rlw"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="q5L-ku-7hf" userLabel="black Stack View">
+                                        <rect key="frame" x="0.0" y="125" width="375" height="125"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black" translatesAutoresizingMaskIntoConstraints="NO" id="wH8-i3-SqH">
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRICE: 1000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWp-V8-lau">
+                                                <rect key="frame" x="125" y="0.0" width="125" height="125"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oaj-y2-NhB">
+                                                <rect key="frame" x="250" y="0.0" width="125" height="125"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="35"/>
+                                                <state key="normal" title="BUY">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buyBlackCosmetic:" destination="aBU-pc-EE6" eventType="touchUpInside" id="2QJ-tV-HXQ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="125" id="cmV-Dm-glg"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1Eb-ro-DEx" userLabel="invisibile Stack View">
+                                        <rect key="frame" x="0.0" y="250" width="375" height="125"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="125" id="x8D-G4-7ET"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="At9-Dl-Rbq" userLabel="empty Stack View">
+                                        <rect key="frame" x="0.0" y="375" width="375" height="125"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="125" id="teL-pH-YXP"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="B3F-Re-b06" userLabel="empty Stack View">
+                                        <rect key="frame" x="0.0" y="500" width="375" height="125"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="125" id="gSp-OV-48z"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6gp-tO-5fz" firstAttribute="trailing" secondItem="6WQ-35-kS7" secondAttribute="trailing" id="JKS-ME-o22"/>
+                            <constraint firstItem="6gp-tO-5fz" firstAttribute="bottom" secondItem="6WQ-35-kS7" secondAttribute="bottom" priority="250" id="QtG-Wg-j0l"/>
+                            <constraint firstItem="6WQ-35-kS7" firstAttribute="leading" secondItem="6gp-tO-5fz" secondAttribute="leading" id="acR-wg-Njx"/>
+                            <constraint firstItem="6WQ-35-kS7" firstAttribute="top" secondItem="wFk-WE-8zG" secondAttribute="bottom" priority="750" id="ejz-zz-8RH"/>
+                            <constraint firstItem="6gp-tO-5fz" firstAttribute="top" secondItem="wFk-WE-8zG" secondAttribute="top" constant="10" id="kwi-Se-j6c"/>
+                            <constraint firstItem="6gp-tO-5fz" firstAttribute="leading" secondItem="wFk-WE-8zG" secondAttribute="leading" priority="250" constant="-20" id="zfr-sG-3J0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6gp-tO-5fz"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kC-Eh-SBM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1082" y="23"/>
+            <point key="canvasLocation" x="1080.8" y="22.906403940886701"/>
         </scene>
     </scenes>
     <resources>
         <image name="background" width="2048" height="4096"/>
+        <image name="black" width="1024" height="1024"/>
         <image name="blue" width="2048" height="2048"/>
         <image name="green" width="2048" height="2048"/>
         <image name="orange" width="2048" height="2048"/>
         <image name="pink" width="2048" height="2048"/>
+        <image name="rainbow" width="1024" height="1024"/>
         <image name="red" width="2048" height="2048"/>
         <image name="yellow" width="2048" height="2048"/>
     </resources>
