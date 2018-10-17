@@ -14,6 +14,7 @@
 		3E1A80E3216BDC4900752496 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E1A80E1216BDC4900752496 /* LaunchScreen.storyboard */; };
 		3E1A80EE216BDC4900752496 /* Color_CrashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1A80ED216BDC4900752496 /* Color_CrashTests.swift */; };
 		3E1A80F9216BDC4900752496 /* Color_CrashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1A80F8216BDC4900752496 /* Color_CrashUITests.swift */; };
+		3E1A810D21766D4300752496 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1A810C21766D4300752496 /* StoreViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		3E1A80F4216BDC4900752496 /* Color CrashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Color CrashUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E1A80F8216BDC4900752496 /* Color_CrashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_CrashUITests.swift; sourceTree = "<group>"; };
 		3E1A80FA216BDC4900752496 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E1A810C21766D4300752496 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				3E1A80D8216BDC4500752496 /* AppDelegate.swift */,
 				3E1A80DA216BDC4500752496 /* ViewController.swift */,
+				3E1A810C21766D4300752496 /* StoreViewController.swift */,
 				3E1A80DC216BDC4500752496 /* Main.storyboard */,
 				3E1A80DF216BDC4900752496 /* Assets.xcassets */,
 				3E1A80E1216BDC4900752496 /* LaunchScreen.storyboard */,
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E1A810D21766D4300752496 /* StoreViewController.swift in Sources */,
 				3E1A80DB216BDC4500752496 /* ViewController.swift in Sources */,
 				3E1A80D9216BDC4500752496 /* AppDelegate.swift in Sources */,
 			);
@@ -442,7 +446,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wesleydashner.Color-Crash";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -460,7 +464,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wesleydashner.Color-Crash";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
