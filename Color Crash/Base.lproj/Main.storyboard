@@ -462,6 +462,12 @@
                                 <color key="textColor" red="0.4431435763835907" green="0.44312587380409241" blue="0.44313791394233704" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill the board in 20 turns by tapping the colors at the bottom of the screen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgO-hE-YOr">
+                                <rect key="frame" x="42.666666666666657" y="157.33333333333334" width="290" height="40.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -472,10 +478,12 @@
                             <constraint firstAttribute="bottom" secondItem="GTf-Wi-sx2" secondAttribute="bottom" id="Rbe-74-NPT"/>
                             <constraint firstItem="Tg2-XI-kjT" firstAttribute="centerX" secondItem="GTf-Wi-sx2" secondAttribute="centerX" id="USS-Pe-LXr"/>
                             <constraint firstItem="GTf-Wi-sx2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="VO2-xP-YrI"/>
+                            <constraint firstItem="qxJ-sV-0Ap" firstAttribute="top" secondItem="DgO-hE-YOr" secondAttribute="bottom" id="Xii-HW-a0S"/>
                             <constraint firstItem="GTf-Wi-sx2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="daO-G9-Nw6"/>
                             <constraint firstItem="Bmk-u5-gTT" firstAttribute="centerY" secondItem="qxJ-sV-0Ap" secondAttribute="centerY" id="dlT-Et-utc"/>
                             <constraint firstItem="qxJ-sV-0Ap" firstAttribute="trailing" secondItem="w6N-bE-wpi" secondAttribute="trailing" constant="1" id="gpc-2X-EoB"/>
                             <constraint firstItem="w6N-bE-wpi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hlB-Me-UMM"/>
+                            <constraint firstItem="DgO-hE-YOr" firstAttribute="centerX" secondItem="GTf-Wi-sx2" secondAttribute="centerX" id="ihQ-Wz-QI7"/>
                             <constraint firstAttribute="trailing" secondItem="qxJ-sV-0Ap" secondAttribute="trailing" constant="15" id="m77-yU-iRO"/>
                             <constraint firstItem="Tg2-XI-kjT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="11" id="neN-3g-ilA"/>
                             <constraint firstItem="qxJ-sV-0Ap" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="sSN-O0-1Td"/>
@@ -495,6 +503,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="instructionsLabel" destination="DgO-hE-YOr" id="TSp-SA-47f"/>
                         <outlet property="moveCounterLabel" destination="Tg2-XI-kjT" id="Yom-ZK-Ye9"/>
                         <outlet property="noteLabel" destination="gWp-ts-46f" id="V07-Dj-FJd"/>
                         <outlet property="tile0_0" destination="mBG-R7-7jl" id="cNf-YX-93k"/>

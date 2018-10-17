@@ -232,6 +232,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var winLabel: UILabel!
     @IBOutlet weak var winsCounter: UILabel!
     @IBOutlet weak var noteLabel: UILabel!
+    @IBOutlet weak var instructionsLabel: UILabel!
     
     var moveCounter = 0
     
@@ -738,6 +739,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Hide instructionLabel if app has been opened more than 3 times
+        if UserDefaults.standard.object(forKey: "timesOpened") == nil {
+            UserDefaults.standard.set(-1, forKey: "timesOpened")
+        }
+        var timesOpened = UserDefaults.standard.object(forKey: "timesOpened") as! Int
+        timesOpened += 1
+        UserDefaults.standard.set(timesOpened, forKey: "timesOpened")
+        if timesOpened > 3 {
+            instructionsLabel.isHidden = true
+        }
+        
         if UserDefaults.standard.object(forKey: "rainbowBought") == nil {
             UserDefaults.standard.set(false, forKey: "rainbowBought")
         }
