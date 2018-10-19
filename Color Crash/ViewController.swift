@@ -277,16 +277,21 @@ class ViewController: UIViewController {
     let colors: Array = ["red", "orange", "yellow", "green", "blue", "pink"]
     
     func resetGame() {
+        
         win = false
         lose = false
         moveCounter = 0
         winLabel.isHidden = true
         noteLabel.isHidden = true
         moveCounterLabel.text = String(moveCounter)
+        
         let imageTiles: Array = [tile0_1, tile0_2, tile0_3, tile0_4, tile0_5, tile0_6, tile0_7, tile0_8, tile0_9, tile1_0, tile1_1, tile1_2, tile1_3, tile1_4, tile1_5, tile1_6, tile1_7, tile1_8, tile1_9, tile2_0, tile2_1, tile2_2, tile2_3, tile2_4, tile2_5, tile2_6, tile2_7, tile2_8, tile2_9, tile3_0, tile3_1, tile3_2, tile3_3, tile3_4, tile3_5, tile3_6, tile3_7, tile3_8, tile3_9, tile4_0, tile4_1, tile4_2, tile4_3, tile4_4, tile4_5, tile4_6, tile4_7, tile4_8, tile4_9, tile5_0, tile5_1, tile5_2, tile5_3, tile5_4, tile5_5, tile5_6, tile5_7, tile5_8, tile5_9, tile6_0, tile6_1, tile6_2, tile6_3, tile6_4, tile6_5, tile6_6, tile6_7, tile6_8, tile6_9, tile7_0, tile7_1, tile7_2, tile7_3, tile7_4, tile7_5, tile7_6, tile7_7, tile7_8, tile7_9, tile8_0, tile8_1, tile8_2, tile8_3, tile8_4, tile8_5, tile8_6, tile8_7, tile8_8, tile8_9, tile9_0, tile9_1, tile9_2, tile9_3, tile9_4, tile9_5, tile9_6, tile9_7, tile9_8, tile9_9,]
+        
         for i in imageTiles {
             i?.image = UIImage(named: colors.randomElement()!)
         }
+        
+        // If a cosmetic is being used, set tile0_0 to respective cosmetic
         if blackCosmetic == true {
             tile0_0.image = UIImage(named: "black")
         }
@@ -304,19 +309,27 @@ class ViewController: UIViewController {
         while tile0_0.image == tile1_0.image {
             tile1_0.image = UIImage(named: colors.randomElement()!)
         }
+        
         updateObjects()
         for i in objectTiles {
             i.captured = false
         }
         tile_0_0.captured = true
+        
         zPositionVar += 1
         winLabel.layer.zPosition = zPositionVar + 1
     }
     
     // Don't need to test EVERY tile EVERY time (Maybe remove x and y properties from tile class and put all tiles into a matrix)
     func mainButton(newColor: String) {
-        var somethingChanged = true
+        
         impactFeedbackGenerator.impactOccurred()
+        
+        moveCounterLabel.isHidden = false
+        instructionsLabel.isHidden = true
+        
+        var somethingChanged = true
+        
         if win == false && lose == false {
             while somethingChanged == true {
                 somethingChanged = false
@@ -740,15 +753,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Hide instructionLabel if this view has been opened more than 3 times
+        // Hide instructionLabel and show moveCounterLabel if this view has been opened more than 1 time
         if UserDefaults.standard.object(forKey: "timesOpened") == nil {
             UserDefaults.standard.set(0, forKey: "timesOpened")
         }
         var timesOpened = UserDefaults.standard.object(forKey: "timesOpened") as! Int
         timesOpened += 1
         UserDefaults.standard.set(timesOpened, forKey: "timesOpened")
+        moveCounterLabel.isHidden = true
         if timesOpened > 1 {
             instructionsLabel.isHidden = true
+            moveCounterLabel.isHidden = false
         }
         
         // Set all cosmeticBought values to false if this is the first time the app is opened
@@ -772,6 +787,7 @@ class ViewController: UIViewController {
         else {
             GlobalVariable.timesWon = 0
         }
+        
         tile0_0.image = UIImage(named: colors.randomElement()!)
         resetGame()
         impactFeedbackGenerator.prepare()
