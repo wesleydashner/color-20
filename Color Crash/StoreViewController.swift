@@ -111,11 +111,11 @@ class StoreViewController: UIViewController {
     
     @IBAction func buyRainbowCosmetic(_ sender: UIButton) {
 
-        if rainbowBought == false && ViewController.GlobalVariable.timesWon - 250 >= 0 {
+        if rainbowBought == false && ViewController.GlobalVariable.timesWon - 150 >= 0 {
             
             notificiationFeedbackGenerator.notificationOccurred(.success)
             
-            ViewController.GlobalVariable.timesWon -= 250
+            ViewController.GlobalVariable.timesWon -= 150
             UserDefaults.standard.set(ViewController.GlobalVariable.timesWon, forKey: "timesWon")
             rainbowBought = true
             UserDefaults.standard.set(true, forKey: "rainbowBought")
@@ -154,11 +154,11 @@ class StoreViewController: UIViewController {
     
     @IBAction func buyBlackCosmetic(_ sender: UIButton) {
         
-        if blackBought == false && ViewController.GlobalVariable.timesWon - 100 >= 0 {
+        if blackBought == false && ViewController.GlobalVariable.timesWon - 75 >= 0 {
             
             notificiationFeedbackGenerator.notificationOccurred(.success)
             
-            ViewController.GlobalVariable.timesWon -= 100
+            ViewController.GlobalVariable.timesWon -= 75
             UserDefaults.standard.set(ViewController.GlobalVariable.timesWon, forKey: "timesWon")
             blackBought = true
             UserDefaults.standard.set(true, forKey: "blackBought")
@@ -197,11 +197,11 @@ class StoreViewController: UIViewController {
     
     @IBAction func buyInvisibleButton(_ sender: UIButton) {
         
-        if invisibleBought == false && ViewController.GlobalVariable.timesWon - 500 >= 0 {
+        if invisibleBought == false && ViewController.GlobalVariable.timesWon - 300 >= 0 {
             
             notificiationFeedbackGenerator.notificationOccurred(.success)
             
-            ViewController.GlobalVariable.timesWon -= 500
+            ViewController.GlobalVariable.timesWon -= 300
             UserDefaults.standard.set(ViewController.GlobalVariable.timesWon, forKey: "timesWon")
             invisibleBought = true
             UserDefaults.standard.set(true, forKey: "invisibleBought")
