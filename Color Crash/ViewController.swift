@@ -283,7 +283,7 @@ class ViewController: UIViewController {
             currentMultiplierLabel.text = "x" + String(currentMultiplier)
             currentStreakLabel.text = "Current Streak: " + String(currentStreak)
             if currentStreak > highestStreak {
-                UserDefaults.standard.set(currentMultiplier, forKey: "highestStreak")
+                UserDefaults.standard.set(currentStreak, forKey: "highestStreak")
                 highestStreak = UserDefaults.standard.object(forKey: "highestStreak") as! Int
                 highestStreakLabel.text = "Highest Streak: " + String(highestStreak)
             }
