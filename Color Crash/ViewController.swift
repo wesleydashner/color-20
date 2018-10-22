@@ -233,11 +233,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var winsCounter: UILabel!
     @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var instructionsLabel: UILabel!
+    @IBOutlet weak var highestStreakLabel: UILabel!
+    @IBOutlet weak var currentStreakLabel: UILabel!
+    @IBOutlet weak var currentMultiplierLabel: UILabel!
     
     var moveCounter = 0
     
     var win = false
     var lose = false
+    var currentMultiplier = 1
+    var highestStreak = 0
+    var currentStreak = 0
     
     func updateCounter() {
         moveCounter += 1
@@ -251,6 +257,10 @@ class ViewController: UIViewController {
                 if i.color != testColor {
                     if moveCounter == 20 {
                         lose = true
+                        currentStreak = 0
+                        currentMultiplier = 1
+                        currentStreakLabel.text = "Current Streak: 0"
+                        currentMultiplierLabel.text = "x1"
                         winLabel.text = "YOU LOSE!"
                         winLabel.isHidden = false
                         noteLabel.isHidden = false
@@ -259,15 +269,36 @@ class ViewController: UIViewController {
                 }
             }
             win = true
+            currentStreak += 1
+            GlobalVariable.timesWon += currentMultiplier
+            if currentMultiplier == 1 {
+                currentMultiplier = 2
+            }
+            else if currentMultiplier == 10 {
+                currentMultiplier = 10
+            }
+            else {
+                currentMultiplier += 2
+            }
+            currentMultiplierLabel.text = "x" + String(currentMultiplier)
+            currentStreakLabel.text = "Current Streak: " + String(currentStreak)
+            if currentStreak > highestStreak {
+                UserDefaults.standard.set(currentMultiplier, forKey: "highestStreak")
+                highestStreak = UserDefaults.standard.object(forKey: "highestStreak") as! Int
+                highestStreakLabel.text = "Highest Streak: " + String(highestStreak)
+            }
             winLabel.text = "YOU WIN!"
             winLabel.isHidden = false
             noteLabel.isHidden = false
-            GlobalVariable.timesWon += 1
             winsCounter.text = "$" + String(GlobalVariable.timesWon)
             UserDefaults.standard.set(GlobalVariable.timesWon, forKey: "timesWon")
         }
         else {
             lose = true
+            currentStreak = 0
+            currentMultiplier = 1
+            currentStreakLabel.text = "Current Streak: 0"
+            currentMultiplierLabel.text = "x1"
             winLabel.text = "YOU LOSE!"
             winLabel.isHidden = false
             noteLabel.isHidden = false
@@ -776,6 +807,14 @@ class ViewController: UIViewController {
         if UserDefaults.standard.object(forKey: "invisibleBought") == nil {
             UserDefaults.standard.set(false, forKey: "invisibleBought")
         }
+        
+        // Set highestStreak to 0 if this is the first time the app is opened
+        if UserDefaults.standard.object(forKey: "highestStreak") == nil {
+            UserDefaults.standard.set(0, forKey: "highestStreak")
+        }
+        
+        highestStreak = UserDefaults.standard.object(forKey: "highestStreak") as! Int
+        highestStreakLabel.text = "Highest Streak: " + String(highestStreak)
         
         if GlobalVariable.timesWon != -1 {
             UserDefaults.standard.set(GlobalVariable.timesWon, forKey: "timesWon")
